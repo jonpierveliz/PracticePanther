@@ -1,0 +1,47 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.TimeDetailView"
+             Title="TimeDetail"
+             NavigatedTo="OnArrived">
+
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Name" />
+            <Label Grid.Row="0" Grid.Column="1" Text="Time Entry" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Date" />
+            <DatePicker Grid.Row="1" Grid.Column="1" Date="{Binding Path=Model.Date}"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Text="Hours" />
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Path=Model.Hours}"/>
+
+            <Label Grid.Row="3" Grid.Column="0" Text="Project ID" />
+            <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Path=Model.ProjectId}"/>
+
+            <Label Grid.Row="4" Grid.Column="0" Text="Employee ID" />
+            <Entry Grid.Row="4" Grid.Column="1" Text="{Binding Path=Model.EmployeeId}"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Text="Narrative" />
+            <Entry Grid.Row="5" Grid.Column="1" Text="{Binding Path=Model.Narrative}"/>
+        </Grid>
+
+        <!-- Button for saving changes -->
+        <Button Text="Ok" Clicked="OkClicked" BackgroundColor="Blue" />
+        <!-- Button for canceling changes -->
+        <Button Text="Cancel" Clicked="CancelClicked" BackgroundColor="Blue" />
+
+    </VerticalStackLayout>
+</ContentPage>

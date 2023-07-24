@@ -1,0 +1,43 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.BillsDetailView"
+             Title="BillsDetail">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <!-- Title Row -->
+                <RowDefinition Height="*" />
+                <!-- Time Entries Row -->
+                <RowDefinition Height="Auto" />
+                <!-- Buttons Row -->
+                <RowDefinition Height="Auto" />
+                <!-- OK Button Row -->
+            </Grid.RowDefinitions>
+
+            <!-- Title in the first row -->
+            <Label Text="Time Entries" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+
+            <!-- ListView in the second row -->
+            <ListView Grid.Row="1" ItemsSource="{Binding TimeEntries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <CheckBox IsChecked="{Binding IsSelected}" VerticalOptions="Center" Color="Blue" />
+                                <Label Text="{Binding Name}" VerticalOptions="Center" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- "Generate Bill" button in the third row -->
+            <Button Grid.Row="2" Text="Generate Bill" Command="{Binding SubmitCommand}" CommandParameter="{Binding}" BackgroundColor="Blue" />
+
+            <!-- "OK" button in the fourth row -->
+            <Button Grid.Row="3" Text="Ok" Command="{Binding OkCommand}" CommandParameter="{Binding}" BackgroundColor="Blue" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

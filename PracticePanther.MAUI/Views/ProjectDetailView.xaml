@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.ProjectDetailView"
+             Title="ProjectDetail"
+             NavigatedTo="OnArrived">
+    
+    <VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="11*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+            Padding="10"
+            Text="Name" />
+            <Entry Grid.Column="1" Text="{Binding Path=Model.Name}"/>
+        </Grid>
+
+        <!-- Button for saving changes -->
+        <Button Text="Ok" Clicked="OkClicked" BackgroundColor="Blue"></Button>
+        <!-- Button for canceling changes-->
+        <Button Text="Cancel" Clicked="CancelClicked" BackgroundColor="Blue"></Button>
+       
+    </VerticalStackLayout>
+</ContentPage>

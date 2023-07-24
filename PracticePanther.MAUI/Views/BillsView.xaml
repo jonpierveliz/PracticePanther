@@ -1,0 +1,43 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.BillsView"
+             Title="Bills">
+
+    <!-- Use a Grid to organize the layout -->
+    <Grid>
+        <!-- Define the rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!-- Title Row -->
+            <RowDefinition Height="*" />
+            <!-- Content Row -->
+            <RowDefinition Height="Auto" />
+            <!-- OK Button Row -->
+        </Grid.RowDefinitions>
+
+        <!-- Title in the first row -->
+        <Label Text="Bills" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
+
+        <!-- Content in the second row -->
+        <StackLayout Grid.Row="1">
+            <Label Text="{Binding Display}" />
+            <ListView ItemsSource="{Binding Bills}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+                                <Label Text="Bill ID:" />
+                                <Label Text="{Binding Id}" />
+                                <Label Text="{Binding TotalAmount, StringFormat='Total Amount: {0:C}'}" />
+                                <Label Text="{Binding DueDate, StringFormat='Due Date: {0:d}'}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+        <!-- "OK" button in the third row -->
+        <Button Text="OK" Command="{Binding OkCommand}" CommandParameter="{Binding}" Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="Blue" />
+    </Grid>
+</ContentPage>

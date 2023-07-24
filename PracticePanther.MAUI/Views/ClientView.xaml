@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.ClientView"
+             Title="Client"
+             NavigatedTo="OnArrived">
+
+    <!-- Layout Components-->
+    <VerticalStackLayout>
+        <!-- 1st grid -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="11*" />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- Search bar for clients -->
+            <SearchBar Grid.Column="0" Text="{Binding ClientQuery}" SearchCommand="{Binding SearchClientCommand}" Placeholder="Search"/>
+            <!-- Button for adding projects -->
+            <Button Grid.Column="2" Text="Add" Clicked="AddClicked" BackgroundColor="Blue" />
+        </Grid>
+
+        <!-- List view for clients-->
+        <ListView ItemsSource="{Binding Clients}"
+                  SelectedItem="{Binding SelectedClient}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="9*" />
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Label to display client information -->
+                            <Label Grid.Column="0" Text="{Binding Display}" />
+                            <!-- Button for editing client information -->
+                            <Button Grid.Column="2" Text="Edit" Command="{Binding EditClientCommand}" CommandParameter="{Binding}" BackgroundColor="Blue" />
+                            <!-- Button for deleting selected client-->
+                            <Button Grid.Column="3" Text="Delete" Command="{Binding DeleteClientCommand}" CommandParameter="{Binding}" Clicked="DeleteClicked" BackgroundColor="Blue" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Go Back button -->
+        <Button Text="Go Back" Clicked="BackClicked" BackgroundColor="Blue" />
+    </VerticalStackLayout>
+
+</ContentPage>

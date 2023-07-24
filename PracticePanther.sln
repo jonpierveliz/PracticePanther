@@ -7,7 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticePanther.CLI", "Prac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticePanther.Library", "PracticePanther.Library\PracticePanther.Library.csproj", "{79609699-D068-42C3-A9D4-08E2A274A7BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticePanther.MAUI", "PracticePanther.MAUI\PracticePanther.MAUI.csproj", "{EE1FEAE7-7C3B-4EE5-8EFA-31AA140A83B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PracticePanther.MAUI", "PracticePanther.MAUI\PracticePanther.MAUI.csproj", "{EE1FEAE7-7C3B-4EE5-8EFA-31AA140A83B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{79609699-D068-42C3-A9D4-08E2A274A7BD} = {79609699-D068-42C3-A9D4-08E2A274A7BD}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

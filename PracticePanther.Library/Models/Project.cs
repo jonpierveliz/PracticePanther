@@ -13,6 +13,7 @@ namespace PracticePanther.Library.Models
         public DateTime OpenDate { get; set; }
         public DateTime ClosedDate { get; set; }
         public bool IsActive { get; set; }
+       public string? Name { get; set; }
         public string? ShortName { get; set; }
         public string? LongName { get; set; }
         public int ClientId { get; set; }
@@ -21,7 +22,7 @@ namespace PracticePanther.Library.Models
         // Method that overloads ToString
         public override string ToString()
         {
-            return $"{Id}.{ShortName}.{LongName}.{ClientId}.{Client.Name}";
+            return $"{Name}";
         }
     }
 }

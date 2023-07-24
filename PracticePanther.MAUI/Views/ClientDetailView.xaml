@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PracticePanther.MAUI.Views.ClientDetailView"
+             Title="ClientDetail"
+             NavigatedTo="OnArriving">
+
+    <!-- Layout components -->
+    <VerticalStackLayout>
+        <!-- 1st grid -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width ="11*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Label for name -->
+            <Label Grid.Column="0" Text="Name"/>
+            <!-- Entry for name -->
+            <Entry Grid.Column="1" Text="{Binding Path=Model.Name}"/>
+        </Grid>
+
+        <!-- Label for projects -->
+        <Label Text="Projects" FontSize="15" />
+
+        <!-- 2nd grid -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width ="8*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- Search bar for projects -->
+            <SearchBar Grid.Column="0"  Text="{Binding ProjectQuery}" SearchCommand="{Binding SearchProjectCommand}" />
+            <!-- Button for adding projects -->
+            <Button Grid.Column="1" Text="Add Project" Command="{Binding AddProjectCommand}"  BackgroundColor="Blue" />
+        </Grid>
+
+        <!-- List view for projects-->
+        <ListView ItemsSource="{Binding Projects}" 
+                   SelectedItem="{Binding SelectedProject}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="9*"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Label to display project information -->
+                            <Label Grid.Column="0" VerticalTextAlignment="Center" Text="{Binding Display}"></Label>
+                            <Button Grid.Column="1" Text="Time" Command="{Binding BillCommand}" CommandParameter="{Binding}" BackgroundColor="Blue"></Button>
+                            <Button Grid.Column="2" Text="Bills" BackgroundColor="Blue" Clicked="OpenBillsWindowClicked"></Button>
+                            <Button Grid.Column="3" Text="Edit" Command="{Binding EditProjectCommand}" CommandParameter="{Binding}" Clicked="EditClicked" Background="Blue"/>
+                            <Button Grid.Column="4" Text="Delete" Command="{Binding DeleteProjectCommand}" CommandParameter="{Binding}" Clicked="DeleteProjectClicked" Background="Blue"/>
+                        </Grid> 
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <!-- Button for saving changes -->
+        <Button Text="Ok" Clicked="OkClicked" BackgroundColor="Blue"></Button>
+        <!-- Button for canceling changes -->
+        <Button Text="Cancel" Clicked="CancelClicked" BackgroundColor="Blue"></Button>
+    </VerticalStackLayout>
+</ContentPage>

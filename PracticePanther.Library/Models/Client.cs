@@ -18,7 +18,7 @@ namespace PracticePanther.Library.Models
         // Method that overloads ToString
         public override string ToString()
         {
-            return $"{Id}.{Name}.{OpenDate}.{Notes}";
+            return $"{Id} {Name}";
         }
 
        
