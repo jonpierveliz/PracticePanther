@@ -15,6 +15,7 @@ namespace PracticePanther.Library.DTO
         }
 
         public ClientDTO(Client c)
+
         {
             this.Id = c.Id; 
             this.Name = c.Name; 
