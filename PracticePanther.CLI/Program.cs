@@ -7,7 +7,7 @@ namespace PracticePanther.CLI
 {
     internal class Program
     {
-        // Main method that begins the execution of program
+        Main method that begins the execution of program
         static void Main(string[] args)
         {
             // Create a list of clients 

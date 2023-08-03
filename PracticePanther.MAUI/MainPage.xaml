@@ -10,7 +10,6 @@
             <Button Text="Manage Clients and Projects" Clicked="ClientClicked" BackgroundColor="Blue"/>
             <!-- Button for managing employees -->
             <Button Text="Manage Employees" Clicked="EmployeeClicked" BackgroundColor="Blue"></Button>
-          
             <!-- Button for entering time -->
             <Button Text="Enter Time" Clicked="TimeClicked" BackgroundColor="Blue"></Button>
         </VerticalStackLayout>

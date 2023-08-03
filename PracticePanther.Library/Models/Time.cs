@@ -10,14 +10,17 @@ namespace PracticePanther.Library.Models
 {
     public class Time
     {
-        public string Name { get; set; }
+        public string ? Name { get; set; }
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string ? Narrative { get; set; }
         public Decimal Hours { get; set; }
         public int ProjectId { get; set; }
         public int EmployeeId { get; set; }
+        
         private bool isSelected;
+        
+        // Property of selection status for time 
         public bool IsSelected
         {
             get { return isSelected; }

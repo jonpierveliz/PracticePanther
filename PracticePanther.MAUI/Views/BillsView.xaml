@@ -2,10 +2,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PracticePanther.MAUI.Views.BillsView"
              Title="Bills">
-
-    <!-- Use a Grid to organize the layout -->
+    
+    <!-- Layout Components-->
     <Grid>
-        <!-- Define the rows -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <!-- Title Row -->
@@ -18,7 +17,7 @@
         <!-- Title in the first row -->
         <Label Text="Bills" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" />
 
-        <!-- Content in the second row -->
+        <!-- List view in the second row -->
         <StackLayout Grid.Row="1">
             <Label Text="{Binding Display}" />
             <ListView ItemsSource="{Binding Bills}">

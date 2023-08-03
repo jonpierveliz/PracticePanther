@@ -12,12 +12,13 @@
                 <ColumnDefinition Width="11*" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <!-- Search bar for clients -->
+            <!-- Search bar for employees -->
             <SearchBar Grid.Column="0" Text="{Binding EmployeeQuery}" SearchCommand="{Binding SearchEmployeeCommand}" Placeholder="Search" />
             <!-- Button for adding employees -->
             <Button Grid.Column="1" Text="Add" Clicked="AddClicked" Background="Blue"/>
         </Grid>
 
+        <!-- List view for items-->
         <ListView ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -30,8 +31,7 @@
                             </Grid.ColumnDefinitions>
                             <!-- Label to display employee information -->
                             <Label Grid.Column="0" Text="{Binding Display}" />
-                            <!-- Button for editing the employee -->
-                            <!-- Button for editing client information -->
+                            <!-- Button for editing employee information -->
                             <Button Grid.Column="1" Text="Edit" Command="{Binding EditEmployeeCommand}" CommandParameter="{Binding}" BackgroundColor="Blue" />
                             <!-- Button for deleting the employee -->
                             <Button Grid.Column="2" Text="Delete" Command="{Binding DeleteEmployeeCommand}" CommandParameter="{Binding}" Clicked="DeleteClicked" BackgroundColor="Blue" />

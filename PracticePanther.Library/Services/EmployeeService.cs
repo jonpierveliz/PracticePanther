@@ -39,7 +39,7 @@ namespace PracticePanther.Library.Services
 
         private EmployeeService()
         {
-            // Initializes the list of employees with some default data
+            // Initializes list of employees
             employees = new List<Employee>
             {
                 new Employee { Id = 1, Name = "Employee 1", Rate = 10.0m },
@@ -70,7 +70,7 @@ namespace PracticePanther.Library.Services
             }
         }
 
-        // Adds or updates a client
+        // Adds or updates an employee
         public void AddOrUpdate(Employee e)
         {
             var isAdd = false;
@@ -87,8 +87,7 @@ namespace PracticePanther.Library.Services
             }
         }
 
-
-        // Searches for clients matching the provided query
+        // Searches for employees matching the provided query
         public IEnumerable<Employee> Search(string query)
         {
             return Employees

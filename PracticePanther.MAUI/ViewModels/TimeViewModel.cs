@@ -12,7 +12,6 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for a time entry
     internal class TimeViewModel
     {
         // Represents the time entry model
@@ -24,7 +23,7 @@ namespace PracticePanther.MAUI.ViewModels
         // Command to edit the time entry
         public ICommand EditTimeEntryCommand { get; private set; }
 
-        // Display id and name of time entry
+        // Display time info
         public string Display
         {
             get
@@ -78,7 +77,7 @@ namespace PracticePanther.MAUI.ViewModels
             SetUpCommands();
         }
 
-
+        // Constructor that takes in time object
         public TimeViewModel(Time timeEntry)
         {
             if (timeEntry != null)
@@ -89,18 +88,19 @@ namespace PracticePanther.MAUI.ViewModels
             {
                 Model = new Time();
             }
+
             // Set the name based on the time entry's ID
             Model.Name = $"Time Entry {Model.Id}";
             SetUpCommands();
 
         }
 
+        // Default Constructor
         public TimeViewModel()
         {
             Model = new Time();
             // Set the name based on the time entry's ID
             Model.Name = $"Time Entry {Model.Id}";
-
             SetUpCommands();
 
         }
@@ -111,7 +111,7 @@ namespace PracticePanther.MAUI.ViewModels
             TimeService.Current.AddOrUpdate(Model);
         }
 
-        // Refreshes the client list
+        // Refreshes the time list
         public void RefreshTimeEntriesList()
         {
             NotifyPropertyChanged(nameof(Time));

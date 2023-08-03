@@ -13,7 +13,6 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for the client view
     internal class ClientViewViewModel : INotifyPropertyChanged
     {
         // The currently selected client
@@ -46,17 +45,15 @@ namespace PracticePanther.MAUI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // Constructor
+        // Default constructor
         public ClientViewViewModel()
         {
-            // Command to execute the search
             SearchClientCommand = new Command(ExecuteSearchClientCommand);
         }
 
         // Executes the search command
         public void ExecuteSearchClientCommand()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(Clients));
         }
 
@@ -80,7 +77,6 @@ namespace PracticePanther.MAUI.ViewModels
         // Refreshes the client list
         public void RefreshClientList()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(Clients));
         }
     }

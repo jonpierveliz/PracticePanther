@@ -70,7 +70,6 @@
         Route="Bills"
         Shell.BackgroundColor="Blue"/>
 
-    
     <!-- Bill detail page -->
     <ShellContent
         Title="BillsDetail"

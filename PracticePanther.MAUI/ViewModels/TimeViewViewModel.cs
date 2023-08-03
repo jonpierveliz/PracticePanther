@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for the TimeView
     internal class TimeViewViewModel : INotifyPropertyChanged
     {
+        // Represents the selected time entry
         public Time SelectedTimeEntry { get; set; }
 
         // Command to execute the search
@@ -18,19 +18,22 @@ namespace PracticePanther.MAUI.ViewModels
         // The search query entered by the user
         public string TimeEntryQuery { get; set; }
 
+        // List of time 
         public ObservableCollection<TimeViewModel> TimeEntries
         {
             get
             {
-                // Filter and map the employees based on the search query
+                // Filter and map the time entries based on the search query
                 return new ObservableCollection<TimeViewModel>(
                     TimeService.Current.Search(TimeEntryQuery ?? string.Empty)
                            .Select(c => new TimeViewModel(c)).ToList());
             }
         }
 
+        // Event to notify property changes
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Notifies the property change event
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -39,14 +42,12 @@ namespace PracticePanther.MAUI.ViewModels
         // Constructor
         public TimeViewViewModel()
         {
-            // Command to execute the search
             SearchTimeEntryCommand = new Command(ExecuteSearchTimeEntryCommand);
         }
 
         // Executes the search command
         public void ExecuteSearchTimeEntryCommand()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(TimeEntries));
         }
 
@@ -56,18 +57,18 @@ namespace PracticePanther.MAUI.ViewModels
             NotifyPropertyChanged(nameof(TimeEntries));
         }
 
-        // Deletes the selected employee
+        // Deletes the selected timeemployee
         public void Delete()
         {
             if (SelectedTimeEntry != null)
             {
-                // Delete the client from the service
+                // Delete the time from the service
                 ClientService.Current.Delete(SelectedTimeEntry.Id);
 
-                // Clear the selected client
+                // Clear the selected time
                 SelectedTimeEntry = null;
 
-                // Notify that the Clients collection and SelectedClient have changed
+                // Notify that the time collection and Selectedtime have changed
                 NotifyPropertyChanged(nameof(TimeEntries));
                 NotifyPropertyChanged(nameof(SelectedTimeEntry));
             }

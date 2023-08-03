@@ -3,7 +3,9 @@
              x:Class="PracticePanther.MAUI.Views.BillsDetailView"
              Title="BillsDetail">
 
+    <!-- Layout Components-->
     <ContentPage.Content>
+        <!-- 1st grid-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />

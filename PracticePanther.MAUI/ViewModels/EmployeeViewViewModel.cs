@@ -7,9 +7,9 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for the EmployeeView
     internal class EmployeeViewViewModel : INotifyPropertyChanged
     {
+        // Represents the currently selected employee
         public Employee SelectedEmployee { get; set; }
 
         // Command to execute the search
@@ -18,6 +18,7 @@ namespace PracticePanther.MAUI.ViewModels
         // The search query entered by the user
         public string EmployeeQuery { get; set; }
 
+        // Collection of employee view models based on the search query
         public ObservableCollection<EmployeeViewModel> Employees
         {
             get
@@ -29,8 +30,10 @@ namespace PracticePanther.MAUI.ViewModels
             }
         }
 
+        // Event to notify property changes
         public event PropertyChangedEventHandler PropertyChanged;
 
+        // Notifies the property change event
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -39,21 +42,18 @@ namespace PracticePanther.MAUI.ViewModels
         // Constructor
         public EmployeeViewViewModel()
         {
-            // Command to execute the search
             SearchEmployeeCommand = new Command(ExecuteSearchEmployeeCommand);
         }
 
         // Executes the search command
         public void ExecuteSearchEmployeeCommand()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(Employees));
         }
 
-        // Refreshes the client list
+        // Refreshes the employee list
         public void RefreshEmployeeList()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(Employees));
         }
 
@@ -62,17 +62,16 @@ namespace PracticePanther.MAUI.ViewModels
         {
             if (SelectedEmployee != null)
             {
-                // Delete the client from the service
-                ClientService.Current.Delete(SelectedEmployee.Id);
+                // Delete the employee from the service
+                EmployeeService.Current.Delete(SelectedEmployee.Id);
 
-                // Clear the selected client
+                // Clear the selected employee
                 SelectedEmployee = null;
 
-                // Notify that the Clients collection and SelectedClient have changed
+                // Notify that the Employees collection and SelectedEmployee have changed
                 NotifyPropertyChanged(nameof(Employees));
                 NotifyPropertyChanged(nameof(SelectedEmployee));
             }
         }
-
     }
 }

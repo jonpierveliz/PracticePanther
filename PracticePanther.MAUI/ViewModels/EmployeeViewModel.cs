@@ -12,7 +12,6 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model lfor a employee
     internal class EmployeeViewModel
     {
         // Represents the employee model 
@@ -24,7 +23,7 @@ namespace PracticePanther.MAUI.ViewModels
         // Command to edit the client
         public ICommand EditEmployeeCommand { get; private set; }
 
-        // Display id and name of employee
+        // Display employee info
         public string Display
         {
             get
@@ -78,7 +77,7 @@ namespace PracticePanther.MAUI.ViewModels
            SetUpCommands();
         }
 
-
+        // Constructor with an employee object
         public EmployeeViewModel(Employee employee)
         {
             if (employee != null)
@@ -93,6 +92,7 @@ namespace PracticePanther.MAUI.ViewModels
             
         }
 
+        // Default constructor
         public EmployeeViewModel()
         {
             Model = new Employee();
@@ -104,7 +104,7 @@ namespace PracticePanther.MAUI.ViewModels
             EmployeeService.Current.AddOrUpdate(Model);
         }
 
-        // Refreshes the client list
+        // Refreshes the employee list
         public void RefreshEmployeeList()
         {
             NotifyPropertyChanged(nameof(Employee));

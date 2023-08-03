@@ -35,29 +35,8 @@ namespace PracticePanther.MAUI.Views
         // Event handler for the go back button 
         private void BackClicked(object sender, EventArgs e)
         {
+            // Go to main page
             Shell.Current.GoToAsync("//MainPage");
-        }
-
-          private void ViewBillsClicked(object sender, EventArgs e)
-        {
-            var selectedClient = ((Button)sender).BindingContext as ClientViewModel;
-
-            if (selectedClient != null)
-            {
-                // Open the BillsView for the selected client
-                var window = new Window()
-                {
-                    Width = 250,
-                    Height = 350,
-                    X = 0,
-                    Y = 0
-                };
-
-                var billsView = new BillsView(selectedClient.Model.Id, window);
-                window.Page = billsView;
-
-                Application.Current.OpenWindow(window);
-            }
         }
     }
 }

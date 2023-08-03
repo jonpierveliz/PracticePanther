@@ -5,7 +5,9 @@
              Title="EmployeeDetail"
              NavigatedTo="OnArrived">
 
+    <!-- Layout components -->
     <VerticalStackLayout>
+        <!-- 1st grid-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -17,14 +19,15 @@
                 <ColumnDefinition Width="11*"/>
             </Grid.ColumnDefinitions>
 
+            <!-- Label and entry for name -->
             <Label Grid.Row="0" Grid.Column="0" Padding="10" Text="Name" />
             <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Path=Model.Name}"/>
 
+            <!-- Label and entry for rate -->
             <Label Grid.Row="1" Grid.Column="0" Padding="10" Text="Rate" />
             <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Path=Model.Rate}"/>
 
         </Grid>
-
 
         <!-- Button for saving changes -->
         <Button Text="Ok" Clicked="OkClicked" BackgroundColor="Blue" />

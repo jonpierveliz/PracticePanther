@@ -5,12 +5,15 @@
              Title="ProjectDetail"
              NavigatedTo="OnArrived">
     
+    <!-- Layout components -->
     <VerticalStackLayout>
+        <!-- 1st grid -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="11*"/>
             </Grid.ColumnDefinitions>
+            <!--Label for name -->
             <Label Grid.Column="0"
             Padding="10"
             Text="Name" />

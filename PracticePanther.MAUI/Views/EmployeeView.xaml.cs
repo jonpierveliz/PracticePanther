@@ -18,6 +18,7 @@ namespace PracticePanther.MAUI.Views
             Shell.Current.GoToAsync("//MainPage");
         }
 
+        // Event handler for adding a employee
         private void AddClicked(object sender, EventArgs e)
         {
             // Navigate to the employee page 

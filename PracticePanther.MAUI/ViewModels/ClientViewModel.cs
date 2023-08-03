@@ -11,17 +11,17 @@ using System.Windows.Input;
 using PracticePanther.Library.Models;
 using PracticePanther.Library.Services;
 using PracticePanther.MAUI.Views;
+using PracticePanther.Library.DTO;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for a client
     internal class ClientViewModel : INotifyPropertyChanged
     {
         // Represents the client model
-        public Client Model { get; set; }
+        public ClientDTO Model { get; set; }
 
+        // Property to store the query used for filtering projects
         public string ProjectQuery { get; set; }
-
 
         // Collection of projects for the client
         public ObservableCollection<ProjectViewModel> Projects
@@ -41,8 +41,7 @@ namespace PracticePanther.MAUI.ViewModels
             }
         }
 
-
-        // Display id and name of the client
+        // Display client info
         public string Display
         {
             get
@@ -60,17 +59,11 @@ namespace PracticePanther.MAUI.ViewModels
         // Command to add projects
         public ICommand AddProjectCommand { get; private set; }
 
-        // Command to show projects
-        public ICommand ShowProjectCommand { get; private set; }
-
-        public ICommand TimeCommand { get; private set; }
-
-        public ICommand GenerateBillCommand { get; private set; }
-
+        // Command to search for projects
         public ICommand SearchProjectCommand { get; private set; }
 
-        public ICommand ViewBillsCommand { get; private set; }
-
+        // Command to see time entries
+        public ICommand TimeCommand { get; private set; }
 
         // Event to notify property changes
         public event PropertyChangedEventHandler PropertyChanged;
@@ -81,32 +74,32 @@ namespace PracticePanther.MAUI.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public void ExecuteViewBillsCommand()
-        {
-            Shell.Current.GoToAsync($"//Bills?clientId={Model.Id}");
-        }
+        // Executes the command to filter the projects based on the query
         public void ExecuteSearchProject()
         {
             NotifyPropertyChanged(nameof(Projects));
         }
 
-        // Executes the delete command to delete the client
+        // Executes the command to delete the client
         public void ExecuteDeleteClient(int id)
         {
             ClientService.Current.Delete(id);
         }
 
-        // Executes the edit command to navigate to the client detail page
+        // Executes the command to navigate to the client detail page
         public void ExecuteEditClient(int id)
         {
             Shell.Current.GoToAsync($"//ClientDetail?clientId={id}");
         }
 
+        // Executes the command to add a new project for the client
         public void ExecuteAddProject()
         {
             AddOrUpdate();
             Shell.Current.GoToAsync($"//ProjectDetail?clientId={Model.Id}");
         }
+
+        // Executes the comand to open a window to manage bills and time entries for a project
         public void ExecuteTime(ProjectViewModel projectViewModel)
         {
             var window = new Window()
@@ -121,11 +114,10 @@ namespace PracticePanther.MAUI.ViewModels
             Application.Current.OpenWindow(window);
         }
 
-
         // Refreshes the client list
         public void RefreshClientList()
         {
-            NotifyPropertyChanged(nameof(Client));
+            NotifyPropertyChanged(nameof(ClientDTO));
         }
 
         // Refreshes the project list
@@ -145,7 +137,7 @@ namespace PracticePanther.MAUI.ViewModels
         }
 
         // Constructor with a client parameter
-        public ClientViewModel(Client client)
+        public ClientViewModel(ClientDTO client)
         {
             // If a client is provided, use it as the model, otherwise create a new client
             if (client != null)
@@ -154,45 +146,39 @@ namespace PracticePanther.MAUI.ViewModels
             }
             else
             {
-                Model = new Client();
+                Model = new ClientDTO();
             }
 
-            // Call function that sets up commands
             SetUpCommands();
         }
 
         // Constructor with a clientId parameter
         public ClientViewModel(int clientId)
         {
-            // If the clientId is less than or equal to 0, create a new client, otherwise get the client from the service
-            if (clientId <= 0)
-            {
-                Model = new Client();
-            }
-            else
+           
+            if (clientId > 0)
             {
                 Model = ClientService.Current.Get(clientId);
             }
+            else
+            {
+                Model = new ClientDTO();
+            }
 
-            // Call function that sets up commands
             SetUpCommands();
         }
 
         // Default constructor
         public ClientViewModel()
         {
-            Model = new Client();
+            Model = new ClientDTO();
             SetUpCommands();
         }
 
         // Adds or updates the client
         public void AddOrUpdate()
         {
-                ClientService.Current.AddOrUpdate(Model);
+            ClientService.Current.AddOrUpdate(Model);
         }
-
-
-
-
     }
 }

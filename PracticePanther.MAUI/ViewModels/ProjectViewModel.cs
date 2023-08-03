@@ -12,16 +12,15 @@ using System.Runtime.CompilerServices;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for a project
     class ProjectViewModel
     {
         // Represents the project model
         public Project Model { get; set; }
 
-        // Command to add the project
+        // Command to add project
         public ICommand AddProjectCommand { get; set; }
 
-        // Command to delete the client
+        // Command to delete project
         public ICommand DeleteProjectCommand { get; private set; }
 
         // Commmand to cancel process
@@ -32,7 +31,8 @@ namespace PracticePanther.MAUI.ViewModels
 
         // Command for bill 
         public ICommand BillCommand { get; private set; }
-        // Display name of project
+
+        // Display project info
         public string Display
         {
             get
@@ -51,7 +51,6 @@ namespace PracticePanther.MAUI.ViewModels
         }
         
        
-
         // Executes the edit command 
         private void ExecuteEditProject()
         {
@@ -64,12 +63,13 @@ namespace PracticePanther.MAUI.ViewModels
             Shell.Current.GoToAsync($"//ClientDetail?clientId={Model.ClientId}");
         }
 
-       
+       // Executes the delete command
         private void ExecuteDeleteProject(int id)
         {
             ProjectService.Current.Delete(id);
         }
 
+        // Executes the bill command 
         private void ExecuteBill()
         {
             var window = new Window()

@@ -40,27 +40,30 @@ namespace PracticePanther.Library.Services
             return Bills.FirstOrDefault(b => b.Id == id);
         }
 
+        // Initialize list of bills
         private BillService()
         {
-            bills = new List<Bill> 
-    {
-        new Bill { Id = 1, ProjectId = 1, TotalAmount = 100, DueDate = DateTime.Today.AddDays(7) }
-    };
+            bills = new List<Bill>
+            {
+                new Bill { Id = 1, ProjectId = 1, TotalAmount = 100, DueDate = DateTime.Today.AddDays(7) },
+                new Bill { Id = 2, ProjectId = 2, TotalAmount = 100, DueDate = DateTime.Today.AddDays(7) }
+            };
         }
 
-        private int lastBillId = 1;
+        private int lastBillId = 2;
 
-        // Method to generate a new unique bill ID
+        // Create a new unique bill id
         private int GenerateNewBillId()
         {
             lastBillId++;
             return lastBillId;
         }
 
+        // Adds new bill to list
         public void AddBill(Bill b)
         {
             b.Id = GenerateNewBillId();
-            Bills.Add (b);
+            Bills.Add(b);
         }
     }
 }

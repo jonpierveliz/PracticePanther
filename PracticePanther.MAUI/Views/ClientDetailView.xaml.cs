@@ -36,10 +36,10 @@ namespace PracticePanther.MAUI.Views
         // Event handler for when the page is navigated to
         private void OnArriving(object sender, NavigatedToEventArgs e)
         {
-            // Create a new instance of ClientViewModel and set it as the binding context
             BindingContext = new ClientViewModel(ClientId);
         }
 
+        // Event handler for deleting project
         private void DeleteProjectClicked(object sender, EventArgs e)
         {
             (BindingContext as ClientViewModel).RefreshProjectList();
@@ -50,8 +50,8 @@ namespace PracticePanther.MAUI.Views
         {
             (BindingContext as ClientViewModel).RefreshProjectList();
         }
-
-
+        
+        // Event handler for seeing bills
         private void OpenBillsWindowClicked(object sender, EventArgs e)
         {
             var selectedProject = ((Button)sender).BindingContext as ProjectViewModel;

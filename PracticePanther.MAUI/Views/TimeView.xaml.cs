@@ -10,6 +10,7 @@ public partial class TimeView : ContentPage
         BindingContext = new TimeViewViewModel();
     }
 
+    // Event handler for add button
     private void AddClicked(object sender, EventArgs e)
     {
         // Navigate to the employee page 

@@ -6,7 +6,7 @@ public partial class BillsDetailView : ContentPage
 	public BillsDetailView(int projectId, Window parentWindow)
 	{
         InitializeComponent();
+
         BindingContext = new BillsViewModel(projectId, parentWindow);
-        
 	}
 }

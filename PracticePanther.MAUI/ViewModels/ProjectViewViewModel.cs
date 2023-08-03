@@ -12,7 +12,6 @@ using System.Windows.Input;
 
 namespace PracticePanther.MAUI.ViewModels
 {
-    // Represents the view model for the project view
     internal class ProjectViewViewModel
     {
         // Represents the client associated with the projects
@@ -69,7 +68,6 @@ namespace PracticePanther.MAUI.ViewModels
         // Refreshes the project list
         public void RefreshProjectList()
         {
-            // Notify that the Clients collection has changed
             NotifyPropertyChanged(nameof(Projects));
         }
 
